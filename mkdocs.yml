@@ -24,12 +24,32 @@ theme:
     logo: fontawesome/solid/robot
     repo: fontawesome/brands/github
   palette:
-    primary: teal  # テーマカラー
+    # ライトモード
+    - scheme: default
+      primary: teal
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: ダークモードに切り替え
+    # ダークモード
+    - scheme: slate
+      primary: teal
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: ライトモードに切り替え
   features:
     - content.code.copy  # コードコピーボタンの追加
+    - content.code.annotate  # コードアノテーション
     - navigation.tabs  # タブの追加
     - navigation.tabs.sticky  # 画面スクロールした場合もタブを有効化
-    - navigation.top  # ドップに戻るボタンの追加
+    - navigation.top  # トップに戻るボタンの追加
+    - navigation.tracking  # アンカートラッキング
+    - navigation.sections  # セクションの表示
+    - navigation.expand  # デフォルトでナビゲーションを展開
+    - search.highlight  # 検索結果のハイライト
+    - search.share  # 検索結果の共有
+    - toc.follow  # 目次の自動スクロール
 plugins:
   search:
     lang: 'ja'  # 日本語検索の有効化
