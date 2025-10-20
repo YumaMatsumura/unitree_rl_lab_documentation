@@ -1,0 +1,19 @@
+name: pre-commit
+on:
+  push:
+    branches:
+      - master
+jobs:
+  pre-commit:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.1
