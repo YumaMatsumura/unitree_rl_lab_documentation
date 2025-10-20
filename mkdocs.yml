@@ -6,7 +6,14 @@ repo_url: https://github.com/YumaMatsumura/unitree_rl_lab_documentation
 repo_name: YumaMatsumura/unitree_rl_lab_documentation
 
 nav:
-  - ディレクトリ構成: index.md
+  - ホーム: index.md
+  - ディレクトリ構成: directory-structure.md
+  - パラメータ設定:
+      - 環境設定: parameters/environment.md
+      - PPOアルゴリズム: parameters/ppo-algorithm.md
+      - モーショントラッキング: parameters/motion-tracking.md
+      - デプロイ設定: parameters/deployment.md
+  - チューニングガイド: tuning-guide.md
 
 theme:
   name: material
@@ -17,22 +24,22 @@ theme:
     logo: fontawesome/solid/robot
     repo: fontawesome/brands/github
   palette:
-    primary: teal # テーマカラー
+    primary: teal  # テーマカラー
   features:
-    - content.code.copy # コードコピーボタンの追加
-    - navigation.tabs # タブの追加
-    - navigation.tabs.sticky # 画面スクロールした場合もタブを有効化
-    - navigation.top # ドップに戻るボタンの追加
+    - content.code.copy  # コードコピーボタンの追加
+    - navigation.tabs  # タブの追加
+    - navigation.tabs.sticky  # 画面スクロールした場合もタブを有効化
+    - navigation.top  # ドップに戻るボタンの追加
 plugins:
   search:
-    lang: 'ja' # 日本語検索の有効化
+    lang: 'ja'  # 日本語検索の有効化
 extra:
-  social: # フッターにアイコン&リンクを追加
+  social:  # フッターにアイコン&リンクを追加
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/A69eZhrYLmCWncr
     - icon: fontawesome/brands/github
       link: https://github.com/YumaMatsumura/unitree_rl_lab_documentation
-  generator: false # フッターにMkDocsで生成されたことを非表示にする
+  generator: false  # フッターにMkDocsで生成されたことを非表示にする
 extra_css:
   - css/custom.css
   - https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
@@ -41,26 +48,26 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 markdown_extensions:
-  - admonition # メモ、ヒント、警告などのブロックの有効化
-  - attr_list # ボタンの有効化
-  - footnotes # 注釈の有効化
-  - pymdownx.arithmatex: # 数式拡張機能の有効化
+  - admonition  # メモ、ヒント、警告などのブロックの有効化
+  - attr_list  # ボタンの有効化
+  - footnotes  # 注釈の有効化
+  - pymdownx.arithmatex:  # 数式拡張機能の有効化
       generic: true
-  - pymdownx.details # メモ、ヒント、警告などの折りたたみブロックの有効化
-  - pymdownx.highlight: # コードハイライトの有効化
+  - pymdownx.details  # メモ、ヒント、警告などの折りたたみブロックの有効化
+  - pymdownx.highlight:  # コードハイライトの有効化
       use_pygments: true
       noclasses: true
       pygments_style: monokai
       linenums: true
-  - pymdownx.keys # キーコードの有効化
-  - pymdownx.smartsymbols # シンボル（コピーライトなど）の有効化
-  - pymdownx.superfences: # コードフェンスの有効化
+  - pymdownx.keys  # キーコードの有効化
+  - pymdownx.smartsymbols  # シンボル（コピーライトなど）の有効化
+  - pymdownx.superfences:  # コードフェンスの有効化
       custom_fences:
-        - name: mermaid  # コードフェンスにmermaid機能を追加
+        - name: mermaid   # コードフェンスにmermaid機能を追加
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed: # タブブロックの有効化
+  - pymdownx.tabbed:  # タブブロックの有効化
       alternate_style: true
-  - pymdownx.tasklist: # タスクリストの有効化
+  - pymdownx.tasklist:  # タスクリストの有効化
       custom_checkbox: true
       clickable_checkbox: true
