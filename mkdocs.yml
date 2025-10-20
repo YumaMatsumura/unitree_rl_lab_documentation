@@ -2,8 +2,8 @@ site_name: unitree_rl_lab Documentation
 site_description: unitree_rl_labの説明
 copyright: "&copy; 2025 Yuma Matsumura"
 site_author: Yuma Matsumura
-repo_url: https://github.com/YumaMatsumura/unitree_rl_lab_description
-repo_name: YumaMatsumura/unitree_rl_lab_description
+repo_url: https://github.com/YumaMatsumura/unitree_rl_lab_documentation
+repo_name: YumaMatsumura/unitree_rl_lab_documentation
 
 nav:
   - ディレクトリ構成: index.md
@@ -31,7 +31,7 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/A69eZhrYLmCWncr
     - icon: fontawesome/brands/github
-      link: https://github.com/YumaMatsumura/unitree_rl_lab_description
+      link: https://github.com/YumaMatsumura/unitree_rl_lab_documentation
   generator: false # フッターにMkDocsで生成されたことを非表示にする
 extra_css:
   - css/custom.css
