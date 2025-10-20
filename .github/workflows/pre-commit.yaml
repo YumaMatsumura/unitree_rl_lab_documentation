@@ -2,7 +2,7 @@ name: pre-commit
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   pre-commit:
     runs-on: ${{ matrix.os }}
