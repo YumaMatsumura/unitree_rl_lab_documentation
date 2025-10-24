@@ -1,0 +1,1903 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="unitree_rl_labの説明">
+      
+      
+        <meta name="author" content="Yuma Matsumura">
+      
+      
+      
+        <link rel="prev" href="../parameters/deployment/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>チューニングガイド - unitree_rl_lab Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,300i,400,400i,700,700i%7CInconsolata:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans JP";--md-code-font:"Inconsolata"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="unitree_rl_lab Documentation" class="md-header__button md-logo" aria-label="unitree_rl_lab Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M352 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64h-96c-53 0-96 43-96 96v224c0 53 43 96 96 96h256c53 0 96-43 96-96V160c0-53-43-96-96-96h-96zM160 368c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24M224 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 48a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-304 0c0-17.7-14.3-32-32-32S0 206.3 0 224v96c0 17.7 14.3 32 32 32s32-14.3 32-32zm544-32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32v-96c0-17.7-14.3-32-32-32"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            unitree_rl_lab Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              チューニングガイド
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YumaMatsumura/unitree_rl_lab_documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YumaMatsumura/unitree_rl_lab_documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../directory-structure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ディレクトリ構成
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../parameters/environment/" class="md-tabs__link">
+          
+  
+  
+  パラメータ設定
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  チューニングガイド
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="unitree_rl_lab Documentation" class="md-nav__button md-logo" aria-label="unitree_rl_lab Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M352 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64h-96c-53 0-96 43-96 96v224c0 53 43 96 96 96h256c53 0 96-43 96-96V160c0-53-43-96-96-96h-96zM160 368c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24M224 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 48a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-304 0c0-17.7-14.3-32-32-32S0 206.3 0 224v96c0 17.7 14.3 32 32 32s32-14.3 32-32zm544-32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32v-96c0-17.7-14.3-32-32-32"/></svg>
+
+    </a>
+    unitree_rl_lab Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YumaMatsumura/unitree_rl_lab_documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YumaMatsumura/unitree_rl_lab_documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../directory-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ディレクトリ構成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    パラメータ設定
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            パラメータ設定
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    環境設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/ppo-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PPOアルゴリズム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/motion-tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    モーショントラッキング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    デプロイ設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    チューニングガイド
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    チューニングガイド
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      学習を安定化させるには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学習を安定化させるには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ppo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. PPOアルゴリズムのパラメータ調整
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 環境設定のパラメータ調整
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 初期条件のランダム化を緩和
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      学習を高速化するには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学習を高速化するには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 効率的なサンプリング
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 制御周波数の調整
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. カリキュラム学習の活用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      より複雑な動作を学習させるには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="より複雑な動作を学習させるには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 地形の複雑さを増やす
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. エピソード長を延長
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 速度コマンドの範囲を拡大
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 報酬関数の追加
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      実機転用性を高めるには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実機転用性を高めるには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ドメインランダマイゼーションの強化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 観測ノイズの追加
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. アクションの滑らかさを重視
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 制御周波数を実機に合わせる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 特権情報の削除
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      モーショントラッキング特有の調整
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モーショントラッキング特有の調整">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. トラッキング精度の向上
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 動的なモーションの再現
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 初期化範囲の調整
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      デバッグとモニタリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="デバッグとモニタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      TensorBoardでの学習曲線の確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハイパーパラメータの系統的調整
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      推奨設定のテンプレート
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="推奨設定のテンプレート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      高速学習（速度重視）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      安定学習（精度重視）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      実機転用重視
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      学習を安定化させるには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学習を安定化させるには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ppo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. PPOアルゴリズムのパラメータ調整
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 環境設定のパラメータ調整
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 初期条件のランダム化を緩和
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      学習を高速化するには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学習を高速化するには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 効率的なサンプリング
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 制御周波数の調整
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. カリキュラム学習の活用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      より複雑な動作を学習させるには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="より複雑な動作を学習させるには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 地形の複雑さを増やす
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. エピソード長を延長
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 速度コマンドの範囲を拡大
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 報酬関数の追加
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      実機転用性を高めるには
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実機転用性を高めるには">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ドメインランダマイゼーションの強化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 観測ノイズの追加
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. アクションの滑らかさを重視
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 制御周波数を実機に合わせる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 特権情報の削除
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      モーショントラッキング特有の調整
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モーショントラッキング特有の調整">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. トラッキング精度の向上
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 動的なモーションの再現
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 初期化範囲の調整
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      デバッグとモニタリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="デバッグとモニタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      TensorBoardでの学習曲線の確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハイパーパラメータの系統的調整
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      推奨設定のテンプレート
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="推奨設定のテンプレート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      高速学習（速度重視）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      安定学習（精度重視）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      実機転用重視
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">パラメータチューニングガイド</h1>
+<p>このページでは、目的別のパラメータ調整方法を紹介します。強化学習の学習効率を向上させたり、より複雑な動作を実現したり、実機転用性を高めるためのテクニックを解説します。</p>
+<h2 id="_2">学習を安定化させるには</h2>
+<p>学習曲線が不安定だったり、報酬が発散する場合の対処法です。</p>
+<h3 id="1-ppo">1. PPOアルゴリズムのパラメータ調整</h3>
+<p><strong>learning_rateを下げる</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># rsl_rl_ppo_cfg.py</span>
+<span style="color: #F8F8F2">algorithm</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RslRlPpoAlgorithmCfg(</span>
+    <span style="color: #F8F8F2">learning_rate</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">5.0e-4</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 1.0e-3</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>clip_paramを小さくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">algorithm</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RslRlPpoAlgorithmCfg(</span>
+    <span style="color: #F8F8F2">clip_param</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.1</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 0.2</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>max_grad_normを小さくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">algorithm</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RslRlPpoAlgorithmCfg(</span>
+    <span style="color: #F8F8F2">max_grad_norm</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.5</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 1.0</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="2">2. 環境設定のパラメータ調整</h3>
+<p><strong>並列環境数を増やす</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">scene:</span> <span style="color: #F8F8F2">RobotSceneCfg</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RobotSceneCfg(</span>
+    <span style="color: #F8F8F2">num_envs</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">8192</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 4096（GPUメモリが許す限り）</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>報酬のweightを調整</strong></p>
+<p>タスク報酬とペナルティのバランスを取ります。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">8</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">RewardsCfg</span><span style="color: #F8F8F2">:</span>
+    <span style="color: #959077"># タスク報酬を強化</span>
+    <span style="color: #F8F8F2">track_lin_vel_xy</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">2.0</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: 1.5</span>
+    <span style="color: #F8F8F2">track_ang_vel_z</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">1.0</span><span style="color: #F8F8F2">)</span>   <span style="color: #959077"># デフォルト: 0.75</span>
+
+    <span style="color: #959077"># ペナルティを弱める（必要に応じて）</span>
+    <span style="color: #F8F8F2">action_rate</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">)</span>     <span style="color: #959077"># デフォルト: -0.1</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="3">3. 初期条件のランダム化を緩和</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">reset_base</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">EventTerm(</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;pose_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">{</span>
+            <span style="color: #E6DB74">&quot;x&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">),</span>    <span style="color: #959077"># デフォルト: (-0.5, 0.5)</span>
+            <span style="color: #E6DB74">&quot;y&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">),</span>    <span style="color: #959077"># デフォルト: (-0.5, 0.5)</span>
+            <span style="color: #E6DB74">&quot;yaw&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">1.57</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.57</span><span style="color: #F8F8F2">)</span> <span style="color: #959077"># デフォルト: (-3.14, 3.14)</span>
+        <span style="color: #F8F8F2">},</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_3">学習を高速化するには</h2>
+<p>学習時間を短縮したい場合の最適化手法です。</p>
+<h3 id="1">1. 効率的なサンプリング</h3>
+<p><strong>num_steps_per_envを増やす</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># rsl_rl_ppo_cfg.py</span>
+<span style="color: #F8F8F2">num_steps_per_env</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">48</span>  <span style="color: #959077"># デフォルト: 24</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>num_learning_epochsを増やす</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">algorithm</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RslRlPpoAlgorithmCfg(</span>
+    <span style="color: #F8F8F2">num_learning_epochs</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">8</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 5</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>num_mini_batchesを増やす</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">algorithm</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RslRlPpoAlgorithmCfg(</span>
+    <span style="color: #F8F8F2">num_mini_batches</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">8</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 4</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="2_1">2. 制御周波数の調整</h3>
+<p><strong>decimationを大きくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">__post_init__</span><span style="color: #F8F8F2">(self):</span>
+    <span style="color: #F8F8F2">self</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">decimation</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">8</span>  <span style="color: #959077"># デフォルト: 4（制御周波数: 25Hz）</span>
+</code></pre></div></td></tr></table></div>
+<p>制御周波数が下がる（50Hz → 25Hz）ため、タスクによっては性能が低下する可能性があります。</p>
+<h3 id="3_1">3. カリキュラム学習の活用</h3>
+<p>カリキュラム学習を有効にして、簡単なタスクから徐々に難易度を上げます。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">CurriculumCfg</span><span style="color: #F8F8F2">:</span>
+    <span style="color: #F8F8F2">terrain_levels</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">CurrTerm(func</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">terrain_levels_vel)</span>
+    <span style="color: #F8F8F2">lin_vel_cmd_levels</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">CurrTerm(mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">lin_vel_cmd_levels)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_4">より複雑な動作を学習させるには</h2>
+<p>階段や障害物など、複雑な地形での歩行を実現する方法です。</p>
+<h3 id="1_1">1. 地形の複雑さを増やす</h3>
+<p>コメントアウトされている地形タイプを有効化します。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">11</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">12</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">13</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">14</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">15</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">16</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">17</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">18</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">19</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">20</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">21</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">22</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">23</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">24</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">25</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">26</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">COBBLESTONE_ROAD_CFG</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">terrain_gen</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">TerrainGeneratorCfg(</span>
+    <span style="color: #F8F8F2">sub_terrains</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;flat&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">terrain_gen</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">MeshPlaneTerrainCfg(proportion</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.1</span><span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;random_rough&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">terrain_gen</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">HfRandomUniformTerrainCfg(</span>
+            <span style="color: #F8F8F2">proportion</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">noise_range</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.01</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.06</span><span style="color: #F8F8F2">),</span>
+            <span style="color: #F8F8F2">noise_step</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.01</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">border_width</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.25</span>
+        <span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;pyramid_stairs&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">terrain_gen</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">MeshPyramidStairsTerrainCfg(</span>
+            <span style="color: #F8F8F2">proportion</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">step_height_range</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.23</span><span style="color: #F8F8F2">),</span>
+            <span style="color: #F8F8F2">step_width</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">platform_width</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">3.0</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">border_width</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">1.0</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">holes</span><span style="color: #FF4689">=</span><span style="color: #66D9EF">False</span><span style="color: #F8F8F2">,</span>
+        <span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;boxes&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">terrain_gen</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">MeshRandomGridTerrainCfg(</span>
+            <span style="color: #F8F8F2">proportion</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">grid_width</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.45</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">grid_height_range</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">),</span>
+            <span style="color: #F8F8F2">platform_width</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">2.0</span>
+        <span style="color: #F8F8F2">),</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="2_2">2. エピソード長を延長</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">__post_init__</span><span style="color: #F8F8F2">(self):</span>
+    <span style="color: #F8F8F2">self</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">episode_length_s</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">30.0</span>  <span style="color: #959077"># デフォルト: 20.0</span>
+</code></pre></div></td></tr></table></div>
+<p>長いエピソードで、より長期的な戦略を学習できます。</p>
+<h3 id="3_2">3. 速度コマンドの範囲を拡大</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">8</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">base_velocity</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">UniformLevelVelocityCommandCfg(</span>
+    <span style="color: #F8F8F2">limit_ranges</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">UniformLevelVelocityCommandCfg</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">Ranges(</span>
+        <span style="color: #F8F8F2">lin_vel_x</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">),</span>  <span style="color: #959077"># デフォルト: (-1.0, 1.0)</span>
+        <span style="color: #F8F8F2">lin_vel_y</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.6</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.6</span><span style="color: #F8F8F2">),</span>  <span style="color: #959077"># デフォルト: (-0.4, 0.4)</span>
+        <span style="color: #F8F8F2">ang_vel_z</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">)</span>   <span style="color: #959077"># デフォルト: (-1.0, 1.0)</span>
+    <span style="color: #F8F8F2">),</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="4">4. 報酬関数の追加</h3>
+<p>新しい報酬項目を追加して、特定の動作を促進します。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">RewardsCfg</span><span style="color: #F8F8F2">:</span>
+    <span style="color: #959077"># 既存の報酬...</span>
+
+    <span style="color: #959077"># 新しい報酬項目</span>
+    <span style="color: #F8F8F2">stand_still</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(</span>
+        <span style="color: #F8F8F2">func</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">stand_still_penalty,</span>
+        <span style="color: #F8F8F2">weight</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.5</span><span style="color: #F8F8F2">,</span>
+        <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span><span style="color: #E6DB74">&quot;threshold&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #AE81FF">0.1</span><span style="color: #F8F8F2">}</span>
+    <span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_5">実機転用性を高めるには</h2>
+<p>Sim2Realギャップを小さくし、実機での性能を向上させる方法です。</p>
+<h3 id="1_2">1. ドメインランダマイゼーションの強化</h3>
+<p><strong>物理パラメータの範囲を広げる</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">11</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">12</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">13</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">14</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">physics_material</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">EventTerm(</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;static_friction_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.8</span><span style="color: #F8F8F2">),</span>   <span style="color: #959077"># デフォルト: (0.3, 1.2)</span>
+        <span style="color: #E6DB74">&quot;dynamic_friction_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">),</span>  <span style="color: #959077"># デフォルト: (0.3, 1.2)</span>
+        <span style="color: #E6DB74">&quot;restitution_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.0</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">),</span>       <span style="color: #959077"># デフォルト: (0.0, 0.15)</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">)</span>
+
+<span style="color: #F8F8F2">add_base_mass</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">EventTerm(</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;mass_distribution_params&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">2.0</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">5.0</span><span style="color: #F8F8F2">),</span>  <span style="color: #959077"># デフォルト: (-1.0, 3.0)</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>外乱を強化</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">push_robot</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">EventTerm(</span>
+    <span style="color: #F8F8F2">mode</span><span style="color: #FF4689">=</span><span style="color: #E6DB74">&quot;interval&quot;</span><span style="color: #F8F8F2">,</span>
+    <span style="color: #F8F8F2">interval_range_s</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">3.0</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">8.0</span><span style="color: #F8F8F2">),</span>  <span style="color: #959077"># デフォルト: (5.0, 10.0)</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;velocity_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">{</span>
+            <span style="color: #E6DB74">&quot;x&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">1.0</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.0</span><span style="color: #F8F8F2">),</span>     <span style="color: #959077"># デフォルト: (-0.5, 0.5)</span>
+            <span style="color: #E6DB74">&quot;y&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">1.0</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.0</span><span style="color: #F8F8F2">)</span>      <span style="color: #959077"># デフォルト: (-0.5, 0.5)</span>
+        <span style="color: #F8F8F2">}</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="2_3">2. 観測ノイズの追加</h3>
+<p>実機のセンサーノイズを模擬します。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">11</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">12</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">13</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">14</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">15</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">ObservationsCfg</span><span style="color: #F8F8F2">:</span>
+    <span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">PolicyCfg</span><span style="color: #F8F8F2">(ObsGroup):</span>
+        <span style="color: #F8F8F2">base_ang_vel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span>
+            <span style="color: #F8F8F2">func</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">base_ang_vel,</span>
+            <span style="color: #F8F8F2">scale</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span>
+            <span style="color: #F8F8F2">clip</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">100</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">100</span><span style="color: #F8F8F2">),</span>
+            <span style="color: #F8F8F2">noise</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">Unoise(n_min</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">n_max</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: (-0.2, 0.2)</span>
+        <span style="color: #F8F8F2">)</span>
+
+        <span style="color: #F8F8F2">joint_pos_rel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span>
+            <span style="color: #F8F8F2">func</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">joint_pos_rel,</span>
+            <span style="color: #F8F8F2">clip</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">100</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">100</span><span style="color: #F8F8F2">),</span>
+            <span style="color: #F8F8F2">noise</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">Unoise(n_min</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.02</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">n_max</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.02</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: (-0.01, 0.01)</span>
+        <span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="3_3">3. アクションの滑らかさを重視</h3>
+<p><strong>action_rateペナルティの重みを大きくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">action_rate</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(</span>
+    <span style="color: #F8F8F2">func</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">action_rate_l2,</span>
+    <span style="color: #F8F8F2">weight</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.2</span>  <span style="color: #959077"># デフォルト: -0.1</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>アクションのスケールを小さくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">JointPositionAction</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">JointPositionActionCfg(</span>
+    <span style="color: #F8F8F2">scale</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span>  <span style="color: #959077"># デフォルト: 0.25</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="4_1">4. 制御周波数を実機に合わせる</h3>
+<p>実機の制御周波数（通常50Hz）に合わせます。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">__post_init__</span><span style="color: #F8F8F2">(self):</span>
+    <span style="color: #F8F8F2">self</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">decimation</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">4</span>    <span style="color: #959077"># 4 × 0.005s = 0.02s = 50Hz</span>
+    <span style="color: #F8F8F2">self</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">sim</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">dt</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">0.005</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="5">5. 特権情報の削除</h3>
+<p>Policyの観測に実機で取得できない情報が含まれていないか確認します。</p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">8</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">ObservationsCfg</span><span style="color: #F8F8F2">:</span>
+    <span style="color: #66D9EF">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">PolicyCfg</span><span style="color: #F8F8F2">(ObsGroup):</span>
+        <span style="color: #959077"># base_lin_velは含めない（実機で直接測定困難）</span>
+        <span style="color: #F8F8F2">base_ang_vel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span><span style="color: #FF4689">...</span><span style="color: #F8F8F2">)</span>      <span style="color: #959077"># OK: IMUから取得可能</span>
+        <span style="color: #F8F8F2">projected_gravity</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span><span style="color: #FF4689">...</span><span style="color: #F8F8F2">)</span> <span style="color: #959077"># OK: IMUから計算可能</span>
+        <span style="color: #F8F8F2">joint_pos_rel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span><span style="color: #FF4689">...</span><span style="color: #F8F8F2">)</span>     <span style="color: #959077"># OK: エンコーダから取得可能</span>
+        <span style="color: #F8F8F2">joint_vel_rel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span><span style="color: #FF4689">...</span><span style="color: #F8F8F2">)</span>     <span style="color: #959077"># OK: エンコーダから計算可能</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_6">モーショントラッキング特有の調整</h2>
+<p>モーショントラッキングタスクで高品質な動作を実現する方法です。</p>
+<h3 id="1_3">1. トラッキング精度の向上</h3>
+<p><strong>報酬の重みを調整</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># tracking_env_cfg.py</span>
+<span style="color: #F8F8F2">motion_body_pos</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: 1.0</span>
+<span style="color: #F8F8F2">motion_body_ori</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: 1.0</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>stdパラメータを小さくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">6</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">motion_body_pos</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span><span style="color: #E6DB74">&quot;std&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">}</span>  <span style="color: #959077"># デフォルト: 0.3</span>
+<span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">motion_body_ori</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span><span style="color: #E6DB74">&quot;std&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">}</span>  <span style="color: #959077"># デフォルト: 0.4</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="2_4">2. 動的なモーションの再現</h3>
+<p><strong>速度追従報酬の重みを大きくする</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># tracking_env_cfg.py</span>
+<span style="color: #F8F8F2">motion_body_lin_vel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: 1.0</span>
+<span style="color: #F8F8F2">motion_body_ang_vel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: 1.0</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>アクション変化率ペナルティを適度に設定</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #F8F8F2">action_rate_l2</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">)</span>  <span style="color: #959077"># デフォルト: -1e-1</span>
+</code></pre></div></td></tr></table></div>
+<p>動的なモーションでは、アクションが急激に変化する必要があるため、ペナルティを弱めます。</p>
+<h3 id="3_4">3. 初期化範囲の調整</h3>
+<p><strong>学習初期は範囲を小さく</strong></p>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">11</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># tracking_env_cfg.py</span>
+<span style="color: #F8F8F2">motion</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">mdp</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">MotionCommandCfg(</span>
+    <span style="color: #F8F8F2">pose_range</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;x&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.02</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.02</span><span style="color: #F8F8F2">),</span>   <span style="color: #959077"># 小さい範囲から開始</span>
+        <span style="color: #E6DB74">&quot;y&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.02</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.02</span><span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;z&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.005</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.005</span><span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;roll&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;pitch&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.05</span><span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;yaw&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #FF4689">-</span><span style="color: #AE81FF">0.1</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">0.1</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #F8F8F2">},</span>
+<span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>学習が進んだら範囲を拡大</strong></p>
+<p>トラッキング精度が向上したら、ドメインランダマイゼーションを強化します。</p>
+<h2 id="_7">デバッグとモニタリング</h2>
+<h3 id="tensorboard">TensorBoardでの学習曲線の確認</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code>tensorboard<span style="color: #F8F8F2"> </span>--logdir<span style="color: #F8F8F2"> </span>logs/rsl_rl/
+</code></pre></div></td></tr></table></div>
+<p>以下の指標を確認：</p>
+<ul>
+<li><strong>Mean Reward</strong>: 上昇傾向にあるか</li>
+<li><strong>Policy Loss</strong>: 安定しているか（発散していないか）</li>
+<li><strong>Value Loss</strong>: 減少傾向にあるか</li>
+<li><strong>KL Divergence</strong>: <code>desired_kl</code>付近に収束しているか</li>
+</ul>
+<h3 id="_8">ハイパーパラメータの系統的調整</h3>
+<p>一度に1つのパラメータのみを変更し、効果を確認します。</p>
+<ol>
+<li>ベースライン設定で学習</li>
+<li>1つのパラメータを変更</li>
+<li>結果を比較</li>
+<li>改善があれば採用、なければ元に戻す</li>
+<li>次のパラメータへ</li>
+</ol>
+<h2 id="_9">推奨設定のテンプレート</h2>
+<h3 id="_10">高速学習（速度重視）</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># rsl_rl_ppo_cfg.py</span>
+<span style="color: #F8F8F2">num_steps_per_env</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">16</span>
+<span style="color: #F8F8F2">num_learning_epochs</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">3</span>
+<span style="color: #F8F8F2">num_mini_batches</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">2</span>
+<span style="color: #F8F8F2">learning_rate</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">3.0e-3</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">scene</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">num_envs</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">8192</span>
+<span style="color: #F8F8F2">self</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">decimation</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">8</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_11">安定学習（精度重視）</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">6</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># rsl_rl_ppo_cfg.py</span>
+<span style="color: #F8F8F2">num_steps_per_env</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">48</span>
+<span style="color: #F8F8F2">num_learning_epochs</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">8</span>
+<span style="color: #F8F8F2">num_mini_batches</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">8</span>
+<span style="color: #F8F8F2">learning_rate</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">5.0e-4</span>
+<span style="color: #F8F8F2">clip_param</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">0.1</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">3</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #F8F8F2">scene</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">num_envs</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">4096</span>
+<span style="color: #F8F8F2">self</span><span style="color: #FF4689">.</span><span style="color: #F8F8F2">decimation</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">4</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_12">実機転用重視</h3>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 2</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 3</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 4</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 5</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 6</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 7</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 8</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"> 9</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">10</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">11</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">12</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">13</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">14</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">15</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">16</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># velocity_env_cfg.py</span>
+<span style="color: #959077"># 強力なドメインランダマイゼーション</span>
+<span style="color: #F8F8F2">physics_material</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">EventTerm(</span>
+    <span style="color: #F8F8F2">params</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">{</span>
+        <span style="color: #E6DB74">&quot;static_friction_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.8</span><span style="color: #F8F8F2">),</span>
+        <span style="color: #E6DB74">&quot;dynamic_friction_range&quot;</span><span style="color: #F8F8F2">:</span> <span style="color: #F8F8F2">(</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">,</span> <span style="color: #AE81FF">1.5</span><span style="color: #F8F8F2">),</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">)</span>
+
+<span style="color: #959077"># 観測ノイズの追加</span>
+<span style="color: #F8F8F2">base_ang_vel</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">ObsTerm(</span>
+    <span style="color: #F8F8F2">noise</span><span style="color: #FF4689">=</span><span style="color: #F8F8F2">Unoise(n_min</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">n_max</span><span style="color: #FF4689">=</span><span style="color: #AE81FF">0.3</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">)</span>
+
+<span style="color: #959077"># 滑らかなアクション</span>
+<span style="color: #F8F8F2">action_rate</span> <span style="color: #FF4689">=</span> <span style="color: #F8F8F2">RewTerm(weight</span><span style="color: #FF4689">=-</span><span style="color: #AE81FF">0.2</span><span style="color: #F8F8F2">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight" style="background: #272822"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><span style="color: #959077"># rsl_rl_ppo_cfg.py</span>
+<span style="color: #F8F8F2">entropy_coef</span> <span style="color: #FF4689">=</span> <span style="color: #AE81FF">0.02</span>  <span style="color: #959077"># 探索を促進</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_13">まとめ</h2>
+<p>パラメータ調整は試行錯誤のプロセスです。以下のステップで進めることをお勧めします：</p>
+<ol>
+<li><strong>デフォルト設定で学習</strong>を開始</li>
+<li><strong>TensorBoardで学習曲線を観察</strong></li>
+<li><strong>問題を特定</strong>（不安定、遅い、性能不足など）</li>
+<li><strong>このガイドの該当セクションを参照</strong>してパラメータを調整</li>
+<li><strong>結果を評価</strong>し、必要に応じて再調整</li>
+</ol>
+<p>実機展開を目指す場合は、早い段階からドメインランダマイゼーションを強化することが重要です。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 Yuma Matsumura
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/A69eZhrYLmCWncr" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/YumaMatsumura/unitree_rl_lab_documentation" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.sections", "navigation.expand", "search.highlight", "search.share", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../docs/js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
